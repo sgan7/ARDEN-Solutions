@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARDEN Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --bg: #EEEFE7;
+    --bg-alt: #E4E6D9;
+    --panel: #F7F8F2;
+    --ink: #16221B;
+    --ink-soft: #3E4A41;
+    --forest: #28392C;
+    --forest-deep: #182319;
+    --ember: #BD5F2A;
+    --ember-deep: #9A4A1F;
+    --ember-soft: #DE9A66;
+    --sage: #8B9C8B;
+    --line: rgba(22,34,27,0.14);
+    --line-strong: rgba(22,34,27,0.28);
+
+    --font-display: 'Fraunces', serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+
+    --maxw: 1180px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; }
+
+  img, svg{ display:block; max-width:100%; }
+
+  .wrap{
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
+    outline: 2px solid var(--ember);
+    outline-offset: 3px;
+  }
+
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(238,239,231,0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 20px 32px;
+    max-width: var(--maxw);
+    margin: 0 auto;
+  }
+  .logo{
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.28rem;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    color: var(--forest-deep);
+    display:flex;
+    align-items:baseline;
+    gap: 8px;
+  }
+  .logo .mark{
+    display:inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--ember);
+    transform: translateY(-2px);
+  }
+  .logo em{
+    font-style: italic;
+    color: var(--ink-soft);
+    font-weight: 400;
+    font-size: 0.95rem;
+  }
+
+  nav.primary-nav{
+    display:flex;
+    align-items:center;
+    gap: 38px;
+  }
+  nav.primary-nav a{
+    text-decoration:none;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    position: relative;
+    padding: 4px 0;
+  }
+  nav.primary-nav a::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:-2px;
+    height:1px;
+    background: var(--ember);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s ease;
+  }
+  nav.primary-nav a:hover::after{ transform: scaleX(1); }
+
+  .nav-links{ display:flex; gap:34px; align-items:center; }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.92rem;
+    padding: 12px 22px;
+    border-radius: 2px;
+    border: 1px solid var(--forest-deep);
+    color: var(--panel);
+    background: var(--forest-deep);
+    cursor:pointer;
+    transition: background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .btn:hover{ background: var(--ember-deep); border-color: var(--ember-deep); }
+  .btn.ghost{
+    background: transparent;
+    color: var(--forest-deep);
+  }
+  .btn.ghost:hover{
+    background: var(--forest-deep);
+    color: var(--panel);
+  }
+
+  .menu-toggle{
+    display:none;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:8px;
+    flex-direction: column;
+    gap:5px;
+  }
+  .menu-toggle span{
+    width: 22px; height: 1.5px; background: var(--ink);
+  }
+
+  .hero{
+    padding: 108px 0 84px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items:end;
+  }
+  .eyebrow-line{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    margin-bottom: 26px;
+  }
+  .eyebrow-line .rule{
+    width: 30px; height:1px; background: var(--ember);
+  }
+  h1.hero-title{
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2.6rem, 5vw, 4.1rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 28px;
+    color: var(--forest-deep);
+    opacity: 0;
+    transform: translateY(16px);
+    animation: reveal .9s cubic-bezier(.2,.7,.2,1) .15s forwards;
+  }
+  h1.hero-title i{ font-style: italic; color: var(--ember); font-weight: 400; }
+
+  @keyframes reveal{
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  .hero-lede{
+    max-width: 46ch;
+    color: var(--ink-soft);
+    font-size: 1.08rem;
+    margin: 0 0 34px;
+    opacity: 0;
+    animation: reveal .9s cubic-bezier(.2,.7,.2,1) .35s forwards;
+  }
+  .hero-actions{
+    display:flex; gap: 16px; flex-wrap: wrap;
+    opacity: 0;
+    animation: reveal .9s cubic-bezier(.2,.7,.2,1) .5s forwards;
+  }
+
+  .hero-side{
+    border-left: 1px solid var(--line-strong);
+    padding-left: 32px;
+  }
+  .hero-side p{
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+    margin: 0 0 22px;
+  }
+  .hero-side .branch{
+    width: 100%;
+    height: auto;
+    margin-bottom: 22px;
+  }
+
+  .sectors{
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 90px 0 100px;
+  }
+  .section-head{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .section-head h2{
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.9rem, 3vw, 2.5rem);
+    margin: 0;
+    color: var(--forest-deep);
+    max-width: 16ch;
+  }
+  .section-head p{
+    max-width: 34ch;
+    color: var(--ink-soft);
+    margin: 0;
+    font-size: 0.98rem;
+  }
+
+  .sector-list{
+    border-top: 1px solid var(--line-strong);
+  }
+  details.sector-row{
+    border-bottom: 1px solid var(--line-strong);
+  }
+  details.sector-row summary{
+    list-style: none;
+    cursor: pointer;
+    display:grid;
+    grid-template-columns: 60px 1fr 140px 28px;
+    align-items:center;
+    gap: 20px;
+    padding: 26px 4px;
+  }
+  details.sector-row summary::-webkit-details-marker{ display:none; }
+  .sector-index{
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: var(--sage);
+    letter-spacing: 0.04em;
+  }
+  .sector-name{
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--forest-deep);
+    transition: color .2s ease;
+  }
+  details.sector-row:hover .sector-name{ color: var(--ember-deep); }
+  .sector-tag{
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    text-align: right;
+  }
+  .sector-plus{
+    width: 22px; height: 22px;
+    position: relative;
+    justify-self: end;
+  }
+  .sector-plus::before, .sector-plus::after{
+    content:"";
+    position:absolute;
+    background: var(--forest-deep);
+    transition: transform .25s ease;
+  }
+  .sector-plus::before{ left:0; top:50%; width:100%; height:1px; transform: translateY(-50%); }
+  .sector-plus::after{ top:0; left:50%; width:1px; height:100%; transform: translateX(-50%); }
+  details[open] .sector-plus::after{ transform: translateX(-50%) rotate(90deg); opacity:0; }
+
+  .sector-detail{
+    padding: 0 4px 30px 80px;
+    max-width: 62ch;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+  }
+
+  .approach{
+    padding: 96px 0 100px;
+  }
+  .approach .section-head{ margin-bottom: 58px; }
+
+  .steps{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line-strong);
+  }
+  .step{
+    padding: 30px 26px 0 0;
+    border-right: 1px solid var(--line);
+  }
+  .step:last-child{ border-right:none; }
+  .step .num{
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--ember);
+    display:block;
+    margin-bottom: 18px;
+  }
+  .step h3{
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.02rem;
+    margin: 0 0 12px;
+    color: var(--forest-deep);
+  }
+  .step p{
+    font-size: 0.93rem;
+    color: var(--ink-soft);
+    margin:0;
+  }
+
+  .values{
+    background: var(--forest-deep);
+    color: var(--bg);
+    padding: 96px 0;
+  }
+  .values .wrap{
+    display:grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 60px;
+  }
+  .values h2{
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.9rem, 3vw, 2.4rem);
+    margin: 0;
+    max-width: 14ch;
+    color: var(--bg);
+  }
+  .value-list{
+    display:flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .value-item{
+    border-top: 1px solid rgba(238,239,231,0.2);
+    padding-top: 22px;
+    display:grid;
+    grid-template-columns: 160px 1fr;
+    gap: 24px;
+  }
+  .value-item h3{
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    margin:0;
+    color: var(--ember-soft);
+  }
+  .value-item p{
+    margin:0;
+    font-size: 0.95rem;
+    color: rgba(238,239,231,0.78);
+    max-width: 52ch;
+  }
+
+  .contact{
+    padding: 100px 0 110px;
+  }
+  .contact .wrap{
+    display:grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 70px;
+  }
+  .contact-info h2{
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.9rem, 3vw, 2.4rem);
+    margin: 0 0 20px;
+    color: var(--forest-deep);
+    max-width: 14ch;
+  }
+  .contact-info p{
+    color: var(--ink-soft);
+    max-width: 40ch;
+    margin: 0 0 34px;
+    font-size: 0.98rem;
+  }
+  .contact-detail{
+    display:flex;
+    flex-direction: column;
+    gap: 14px;
+    font-size: 0.95rem;
+  }
+  .contact-detail span{
+    display:block;
+    color: var(--sage);
+    font-size: 0.78rem;
+    margin-bottom: 2px;
+  }
+  .contact-detail a{ text-decoration: none; }
+  .contact-detail a:hover{ color: var(--ember-deep); }
+
+  form.contact-form{
+    display:flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .form-row{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+  .field{
+    display:flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .field label{
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+  .field input, .field select, .field textarea{
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    padding: 12px 4px;
+    border: none;
+    border-bottom: 1px solid var(--line-strong);
+    background: transparent;
+    color: var(--ink);
+  }
+  .field textarea{ resize: vertical; min-height: 90px; }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    border-bottom-color: var(--ember);
+  }
+  .contact-form .btn{ align-self: flex-start; margin-top: 8px; }
+  .form-note{ font-size: 0.82rem; color: var(--sage); margin-top: -8px; }
+
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 40px 0;
+  }
+  footer .wrap{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .foot-nav{
+    display:flex;
+    gap: 26px;
+    font-size: 0.86rem;
+  }
+  footer .foot-nav a{ text-decoration:none; color: var(--ink-soft); }
+  footer .foot-nav a:hover{ color: var(--ember-deep); }
+  footer small{ color: var(--sage); font-size: 0.82rem; }
+
+  @media (max-width: 900px){
+    .hero .wrap{ grid-template-columns: 1fr; }
+    .hero-side{ border-left:none; padding-left:0; border-top: 1px solid var(--line-strong); padding-top: 28px; }
+    .steps{ grid-template-columns: 1fr 1fr; }
+    .step{ border-right:none; border-bottom: 1px solid var(--line); padding-bottom: 26px; margin-bottom: 6px; }
+    .values .wrap, .contact .wrap{ grid-template-columns: 1fr; }
+    .value-item{ grid-template-columns: 1fr; gap:8px; }
+  }
+
+  @media (max-width: 680px){
+    .wrap{ padding: 0 20px; }
+    .header-inner{ padding: 16px 20px; }
+    .nav-links{
+      position: absolute;
+      top: 100%; left:0; right:0;
+      background: var(--bg);
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 24px 20px 30px;
+      border-bottom: 1px solid var(--line);
+      display:none;
+    }
+    .nav-links.open{ display:flex; }
+    nav.primary-nav{ position: relative; }
+    .menu-toggle{ display:flex; }
+    .hero{ padding: 70px 0 56px; }
+    .steps{ grid-template-columns: 1fr; }
+    details.sector-row summary{ grid-template-columns: 34px 1fr 24px; }
+    .sector-tag{ display:none; }
+    .sector-detail{ padding-left: 34px; }
+    .form-row{ grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    h1.hero-title, .hero-lede, .hero-actions{ animation: none; opacity:1; transform:none; }
+    html{ scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#top" class="logo"><span class="mark"></span>ARDEN <em>Solutions</em></a>
+    <nav class="primary-nav">
+      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#secteurs">Secteurs</a>
+        <a href="#approche">Approche</a>
+        <a href="#valeurs">Valeurs</a>
+        <a href="#contact" class="btn ghost">Nous contacter</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow-line"><span class="rule"></span>Conseil &amp; solutions multi-secteurs</div>
+        <h1 class="hero-title">Chaque secteur a sa <i>complexité.</i><br>Nous en faisons une trajectoire claire.</h1>
+        <p class="hero-lede">ARDEN Solutions accompagne des organisations de secteurs différents avec une méthode commune : comprendre le terrain avant de construire la solution, et rester présents jusqu'aux résultats.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn">Discuter de votre projet</a>
+          <a href="#secteurs" class="btn ghost">Voir nos secteurs</a>
+        </div>
+      </div>
+      <div class="hero-side">
+        <svg class="branch" viewBox="0 0 220 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 130 C 40 90, 40 60, 70 20" stroke="#8B9C8B" stroke-width="1.2"/>
+          <path d="M70 20 C 90 30, 105 32, 130 22" stroke="#8B9C8B" stroke-width="1"/>
+          <path d="M52 55 C 70 58, 82 66, 95 78" stroke="#8B9C8B" stroke-width="1"/>
+          <path d="M30 100 C 50 100, 60 108, 74 118" stroke="#8B9C8B" stroke-width="1"/>
+          <circle cx="70" cy="20" r="3" fill="#BD5F2A"/>
+        </svg>
+        <p>Le nom Arden porte l'idée d'ardeur — l'engagement dans la durée — et de forêt : plusieurs essences, un même sol. C'est ainsi que nous travaillons avec des secteurs différents sans jamais leur appliquer la même méthode.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectors" id="secteurs">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Des secteurs différents, une exigence commune</h2>
+        <p>Cinq domaines d'intervention aujourd'hui — chacun avec ses propres contraintes, son propre vocabulaire, ses propres urgences.</p>
+      </div>
+
+      <div class="sector-list">
+
+        <details class="sector-row" open>
+          <summary>
+            <span class="sector-index">01</span>
+            <span class="sector-name">Conseil &amp; stratégie</span>
+            <span class="sector-tag">Organisations &amp; dirigeants</span>
+            <span class="sector-plus"></span>
+          </summary>
+          <div class="sector-detail">
+            Diagnostic organisationnel, plans de transformation, accompagnement des dirigeants dans les décisions structurantes. Nous intervenons en amont, quand la question est encore mal posée.
+          </div>
+        </details>
+
+        <details class="sector-row">
+          <summary>
+            <span class="sector-index">02</span>
+            <span class="sector-name">Technologie &amp; digital</span>
+            <span class="sector-tag">Produits &amp; systèmes</span>
+            <span class="sector-plus"></span>
+          </summary>
+          <div class="sector-detail">
+            Cadrage de produits numériques, choix d'architecture, accompagnement au déploiement d'outils métiers. Nous parlons autant aux équipes techniques qu'aux directions.
+          </div>
+        </details>
+
+        <details class="sector-row">
+          <summary>
+            <span class="sector-index">03</span>
+            <span class="sector-name">Industrie &amp; BTP</span>
+            <span class="sector-tag">Opérations &amp; chantiers</span>
+            <span class="sector-plus"></span>
+          </summary>
+          <div class="sector-detail">
+            Optimisation des flux de production, pilotage de projets d'infrastructure, coordination multi-intervenants sur des chantiers complexes.
+          </div>
+        </details>
+
+        <details class="sector-row">
+          <summary>
+            <span class="sector-index">04</span>
+            <span class="sector-name">Énergie &amp; environnement</span>
+            <span class="sector-tag">Transition &amp; conformité</span>
+            <span class="sector-plus"></span>
+          </summary>
+          <div class="sector-detail">
+            Accompagnement des projets de transition énergétique, mise en conformité réglementaire, structuration de démarches environnementales durables.
+          </div>
+        </details>
+
+        <details class="sector-row">
+          <summary>
+            <span class="sector-index">05</span>
+            <span class="sector-name">Santé &amp; services publics</span>
+            <span class="sector-tag">Établissements &amp; collectivités</span>
+            <span class="sector-plus"></span>
+          </summary>
+          <div class="sector-detail">
+            Appui aux établissements et collectivités dans l'organisation des services, la gestion de projets publics et l'amélioration des parcours usagers.
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="approach" id="approche">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Notre méthode, en quatre temps</h2>
+        <p>La même trame, quel que soit le secteur — adaptée à chaque contexte.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="num">01</span>
+          <h3>Comprendre le terrain</h3>
+          <p>Immersion dans vos équipes et vos contraintes réelles avant toute proposition.</p>
+        </div>
+        <div class="step">
+          <span class="num">02</span>
+          <h3>Cadrer la solution</h3>
+          <p>Définition d'une trajectoire précise, avec des jalons mesurables et réalistes.</p>
+        </div>
+        <div class="step">
+          <span class="num">03</span>
+          <h3>Construire ensemble</h3>
+          <p>Mise en œuvre aux côtés de vos équipes, sans dépossession des savoir-faire internes.</p>
+        </div>
+        <div class="step">
+          <span class="num">04</span>
+          <h3>Ancrer les résultats</h3>
+          <p>Suivi après livraison pour vérifier que la solution tient dans la durée.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="values" id="valeurs">
+    <div class="wrap">
+      <h2>Ce qui ne change pas d'un secteur à l'autre</h2>
+      <div class="value-list">
+        <div class="value-item">
+          <h3>Clarté</h3>
+          <p>Des recommandations formulées simplement, sans jargon superflu — pour que chacun, du terrain à la direction, comprenne la décision.</p>
+        </div>
+        <div class="value-item">
+          <h3>Présence</h3>
+          <p>Nous restons impliqués après la remise du rapport ou la mise en service, jusqu'à ce que la solution fonctionne réellement.</p>
+        </div>
+        <div class="value-item">
+          <h3>Sur mesure</h3>
+          <p>Aucune méthode appliquée telle quelle : chaque mission part des contraintes spécifiques de votre organisation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-info">
+        <h2>Parlons de votre projet</h2>
+        <p>Décrivez votre contexte — nous revenons vers vous sous 48h pour un premier échange, sans engagement.</p>
+        <div class="contact-detail">
+          <div><span>Email</span><a href="mailto:contact@ardensolutions.fr">contact@ardensolutions.fr</a></div>
+          <div><span>Téléphone</span><a href="tel:+33100000000">+33 1 00 00 00 00</a></div>
+          <div><span>Adresse</span>12 rue à préciser, 75000 Paris</div>
+        </div>
+      </div>
+      <form class="contact-form">
+        <div class="form-row">
+          <div class="field">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="secteur">Secteur concerné</label>
+          <select id="secteur" name="secteur">
+            <option>Conseil &amp; stratégie</option>
+            <option>Technologie &amp; digital</option>
+            <option>Industrie &amp; BTP</option>
+            <option>Énergie &amp; environnement</option>
+            <option>Santé &amp; services publics</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Votre message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <p class="form-note">Formulaire de démonstration — à connecter à votre messagerie ou CRM.</p>
+        <button type="submit" class="btn">Envoyer le message</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="logo"><span class="mark"></span>ARDEN <em>Solutions</em></a>
+    <nav class="foot-nav">
+      <a href="#secteurs">Secteurs</a>
+      <a href="#approche">Approche</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <small>© 2026 ARDEN Solutions. Tous droits réservés.</small>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  const sectorRows = document.querySelectorAll('.sector-row');
+  sectorRows.forEach(row => {
+    row.addEventListener('toggle', () => {
+      if(row.open){
+        sectorRows.forEach(other => { if(other !== row) other.open = false; });
+      }
+    });
+  });
+
+  const form = document.querySelector('.contact-form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    form.innerHTML = '<p style="font-family: var(--font-display); font-size:1.3rem; color: var(--forest-deep);">Merci — votre message a été noté. (Formulaire de démonstration : connectez-le à votre messagerie pour le rendre fonctionnel.)</p>';
+  });
+</script>
+
+</body>
+</html>
