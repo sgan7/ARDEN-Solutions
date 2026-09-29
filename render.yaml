@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: arden-solutions
+    runtime: static
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
