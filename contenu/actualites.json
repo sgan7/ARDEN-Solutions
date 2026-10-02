@@ -1,0 +1,31 @@
+[
+  {
+    "slug": "modele-article",
+    "publie": false,
+    "titre": "Titre de l'article : ce qui s'est passé, où, avec qui",
+    "date": "2026-10-02",
+    "lieu": "Dakar, Sénégal",
+    "domaine": "suivi-evaluation-meal",
+    "resume": "Une ou deux phrases qui résument l'actualité. Elles s'affichent sous le titre, sur la carte de la liste des actualités, dans Google et lors d'un partage sur LinkedIn ou WhatsApp.",
+    "couverture": {
+      "fichier": "images/actualites/modele-article/couverture.jpg",
+      "alt": "Description de la photo de couverture pour les personnes malvoyantes et pour Google",
+      "legende": "Légende facultative de la photo de couverture (lieu, personnes, crédit photo)."
+    },
+    "corps": [
+      "Premier paragraphe : le contexte. Quel projet, pour quel partenaire, à quel moment. Les mots importants peuvent être mis en **gras**.",
+      "Deuxième paragraphe : ce qu'ARDEN Solutions a fait concrètement sur le terrain.",
+      "## Un intertitre pour structurer un texte long",
+      "- Un point clé ou un résultat chiffré",
+      "- Un deuxième point clé",
+      "- Un troisième point clé",
+      "> Une citation d'un partenaire ou d'un participant peut être mise en avant ainsi.",
+      "Dernier paragraphe : la suite du projet, et un lien éventuel vers une page, par exemple notre domaine [Suivi-évaluation / MEAL](/domaines/suivi-evaluation-meal.html)."
+    ],
+    "photos": [
+      {"fichier": "images/actualites/modele-article/photo-01.jpg", "alt": "Description de la photo 1", "legende": "Légende de la photo 1"},
+      {"fichier": "images/actualites/modele-article/photo-02.jpg", "alt": "Description de la photo 2", "legende": "Légende de la photo 2"},
+      {"fichier": "images/actualites/modele-article/photo-03.jpg", "alt": "Description de la photo 3", "legende": "Légende de la photo 3"}
+    ]
+  }
+]
