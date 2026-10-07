@@ -50,27 +50,27 @@
   var CSS =
     'html.al-pending body{visibility:hidden}' +
     '.al-switch{position:relative;display:inline-flex;flex-shrink:0;font-family:inherit}' +
-    '.al-btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 12px 0 14px;border-radius:18px;border:1.5px solid #C9D3E3;background:#fff;color:#56628A;cursor:pointer;font:inherit;transition:border-color .2s ease,box-shadow .2s ease}' +
+    '.al-btn{display:inline-flex;align-items:center;gap:7px;height:35px;padding:0 8px 0 9px;border-radius:12px;border:1.5px solid #C9D3E3;background:#fff;color:#56628A;cursor:pointer;font:inherit;transition:border-color .2s ease,box-shadow .2s ease}' +
     '.al-btn:hover,.al-btn[aria-expanded=true]{border-color:#13A3BF;box-shadow:0 10px 24px -16px rgba(14,27,77,.45)}' +
     '.al-btn:focus-visible,.al-opt:focus-visible{outline:2px solid #13A3BF;outline-offset:2px}' +
-    '.al-flag{display:inline-block;width:42px;height:28px;border-radius:6px;overflow:hidden;box-shadow:0 0 0 1.5px #DCE3EF;flex-shrink:0;line-height:0}' +
+    '.al-flag{display:inline-block;width:28px;height:19px;border-radius:4px;overflow:hidden;box-shadow:0 0 0 1.5px #DCE3EF;flex-shrink:0;line-height:0}' +
     '.al-flag svg{width:100%;height:100%;display:block}' +
-    '.al-chev{transition:transform .2s ease}' +
+    '.al-chev{width:12px;height:12px;transition:transform .2s ease}' +
     '.al-btn[aria-expanded=true] .al-chev{transform:rotate(180deg)}' +
     '.al-menu{position:absolute;top:calc(100% + 8px);right:0;z-index:1000;min-width:200px;margin:0;padding:6px;list-style:none;background:#fff;border:1px solid #E1E8F3;border-radius:16px;box-shadow:0 24px 48px -20px rgba(14,27,77,.4)}' +
     '.al-menu[hidden]{display:none}' +
     '.al-opt{display:flex;align-items:center;gap:12px;width:100%;padding:10px 12px;border:0;border-radius:10px;background:none;color:#0E1B4D;font:500 15px/1.2 "DM Sans",-apple-system,BlinkMacSystemFont,sans-serif;text-align:start;cursor:pointer}' +
     '.al-opt:hover{background:#F2F6FC}' +
     '.al-opt[aria-selected=true]{background:#E3F5F9;font-weight:600}' +
-    '.al-opt .al-flag{width:30px;height:20px;border-radius:4px}' +
+    '.al-menu .al-flag{width:30px;height:20px;border-radius:4px}' +
     '.al-opt .al-ok{margin-inline-start:auto;color:#0B7F99}' +
     '.al-note{margin:0 0 20px;padding:12px 16px;border-radius:12px;background:#F5F8FC;border:1px solid #E1E8F3;font-size:15px;color:#3A4775}' +
     '[dir=rtl] .al-menu{right:auto;left:0}' +
     /* Tablette : avec le sélecteur, les liens Secteurs/Approche/Valeurs (aussi en pied de page) cèdent la place. */
-    '@media (max-width:1000px){header .nav-link:not(.nav-news){display:none!important}header nav a:not(.btn):not(.news):not(.nav-news){display:none!important}}' +
-    '@media (max-width:760px){.al-btn{height:42px;gap:6px;padding:0 8px 0 9px;border-radius:14px}.al-flag{width:30px;height:20px;border-radius:4px}.al-chev{width:15px;height:15px}}' +
+    '@media (max-width:1000px){header .nav-link:not(.nav-news){display:none!important}header nav a:not(.btn):not(.btn-primary):not(.news):not(.nav-news){display:none!important}}' +
+    '@media (max-width:760px){.al-btn{height:28px;gap:4px;padding:0 5px 0 6px;border-radius:9px}.al-btn .al-flag{width:20px;height:13px;border-radius:3px}.al-chev{width:10px;height:10px}}' +
     /* Petits téléphones : on resserre l'en-tête pour garder logo, Actualités, contact et langue sur une ligne. */
-    '@media (max-width:420px){.al-btn{height:36px;padding:0 6px;border-radius:12px}.al-chev{display:none}.al-flag{width:26px;height:17px}' +
+    '@media (max-width:420px){.al-btn{height:24px;padding:0 4px;border-radius:8px}.al-chev{display:none}.al-btn .al-flag{width:17px;height:11px}' +
       'header nav{gap:8px!important}header .btn-primary,header nav .btn{padding:0 11px!important;font-size:12.5px!important;white-space:nowrap}header nav .btn{padding:9px 11px!important}' +
       'header .btn-primary svg,header .btn svg{display:none}header .nav-news,header nav .news{font-size:13px!important}' +
       'header img{height:28px!important;width:auto!important}.page>header{padding:0 12px!important}header .wrap{gap:8px!important;padding:0 12px!important}}' +
