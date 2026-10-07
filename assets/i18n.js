@@ -69,11 +69,14 @@
     /* Tablette : avec le sélecteur, les liens Secteurs/Approche/Valeurs (aussi en pied de page) cèdent la place. */
     '@media (max-width:1000px){header .nav-link:not(.nav-news){display:none!important}header nav a:not(.btn):not(.btn-primary):not(.news):not(.nav-news){display:none!important}}' +
     '@media (max-width:760px){.al-btn{height:28px;gap:4px;padding:0 5px 0 6px;border-radius:9px}.al-btn .al-flag{width:20px;height:13px;border-radius:3px}.al-chev{width:10px;height:10px}}' +
-    /* Petits téléphones : on resserre l'en-tête pour garder logo, Actualités, contact et langue sur une ligne. */
-    '@media (max-width:420px){.al-btn{height:24px;padding:0 4px;border-radius:8px}.al-chev{display:none}.al-btn .al-flag{width:17px;height:11px}' +
-      'header nav{gap:8px!important}header .btn-primary,header nav .btn{padding:0 11px!important;font-size:12.5px!important;white-space:nowrap}header nav .btn{padding:9px 11px!important}' +
-      'header .btn-primary svg,header .btn svg{display:none}header .nav-news,header nav .news{font-size:13px!important}' +
-      'header img{height:28px!important;width:auto!important}.page>header{padding:0 12px!important}header .wrap{gap:8px!important;padding:0 12px!important}}' +
+    /* Téléphones : on resserre l'en-tête pour garder logo, Actualités, contact et langue sur une ligne. */
+    '@media (max-width:640px){header nav{gap:10px!important}header .btn-primary,header nav .btn{padding:0 12px!important;font-size:13px!important;white-space:nowrap}header nav .btn{padding:9px 12px!important}' +
+      'header .btn-primary{height:38px!important}header .btn-primary svg,header .btn svg{display:none}header .nav-news,header nav .news{font-size:13.5px!important}' +
+      'header img{height:30px!important;width:auto!important}.page>header{padding:0 14px!important}header .wrap{gap:10px!important;padding:0 14px!important}}' +
+    '@media (max-width:420px){.al-btn{height:26px;padding:0 4px;border-radius:8px}.al-chev{display:none}.al-btn .al-flag{width:18px;height:12px}' +
+      'header nav{gap:8px!important}header .btn-primary,header nav .btn{padding:0 10px!important;font-size:12.5px!important}header nav .btn{padding:8px 10px!important}' +
+      'header .nav-news,header nav .news{font-size:13px!important}header img{height:27px!important}.page>header{padding:0 12px!important}header .wrap{gap:8px!important;padding:0 12px!important}}' +
+    '@media (max-width:350px){header nav{gap:6px!important}header img{height:23px!important}header .nav-news,header nav .news{font-size:12px!important}header .btn-primary,header nav .btn{font-size:12px!important;padding:0 8px!important}header nav .btn{padding:7px 8px!important}}' +
     /* Arabe : écriture de droite à gauche, police arabe, pas d'espacement de lettres (il casse la liaison des lettres). */
     'html[lang=ar] body,html[lang=ar] body *{letter-spacing:0!important;font-family:"DM Sans","Noto Sans Arabic",sans-serif!important}' +
     'html[lang=ar] h1,html[lang=ar] h2,html[lang=ar] h3,html[lang=ar] [style*=Sora]{font-family:"Sora","Noto Sans Arabic",sans-serif!important}' +
