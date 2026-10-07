@@ -126,6 +126,14 @@ def domaines():
     return res
 
 
+def hreflang(url):
+    """Versions traduites (sélecteur de langue, voir outils/traductions.py)."""
+    langues = ["en", "ar", "ja", "it", "de"]
+    return "\n".join([f'<link rel="alternate" hreflang="fr" href="{url}">']
+                     + [f'<link rel="alternate" hreflang="{c}" href="{url}?lang={c}">' for c in langues]
+                     + [f'<link rel="alternate" hreflang="x-default" href="{url}">'])
+
+
 def page(titre, description, url, corps, jsonld, og_image=None, og_type="website",
          robots=None, extra_head=""):
     og_image = og_image or f"{SITE}/og-image.png"
@@ -137,7 +145,8 @@ def page(titre, description, url, corps, jsonld, og_image=None, og_type="website
 <meta name="color-scheme" content="only light">
 <title>{e(titre)}</title>
 <meta name="description" content="{e(description)}">
-{f'<meta name="robots" content="{robots}">' if robots else f'<link rel="canonical" href="{url}">'}
+{f'<meta name="robots" content="{robots}">' if robots else f'<link rel="canonical" href="{url}">' + chr(10) + hreflang(url)}
+<script src="/assets/i18n.js"></script>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
