@@ -147,9 +147,9 @@ def page(titre, description, url, corps, jsonld, og_image=None, og_type="website
 <meta name="description" content="{e(description)}">
 {f'<meta name="robots" content="{robots}">' if robots else f'<link rel="canonical" href="{url}">' + chr(10) + hreflang(url)}
 <script src="/assets/i18n.js"></script>
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <meta name="theme-color" content="#0E1B4D">
 <meta property="og:type" content="{og_type}">
 <meta property="og:locale" content="fr_FR">
