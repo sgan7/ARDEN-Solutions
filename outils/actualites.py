@@ -167,7 +167,7 @@ def page(titre, description, url, corps, jsonld, og_image=None, og_type="website
 </head>
 <body>
 <header><div class="wrap">
-<a href="/" aria-label="ARDEN Solutions, accueil"><img src="/logo.png" alt="ARDEN Solutions" width="150" height="44"></a>
+<a href="/" aria-label="ARDEN Solutions, accueil"><img src="/logo.png" alt="ARDEN Solutions" width="129" height="50"></a>
 <nav aria-label="Navigation principale"><a href="/#secteurs">Secteurs</a><a href="/#approche">Approche</a><a href="/#valeurs">Valeurs</a><a class="news" href="/actualites/" aria-current="page">Actualités</a><a class="btn" href="/#contact">Nous contacter</a></nav>
 </div></header>
 <main>
